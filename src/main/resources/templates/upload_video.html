@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Basic Form</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <img alt="image" class="rounded-circle" src="img/profile_small.jpg"/>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="block m-t-xs font-bold">视频库</span>
+                            <span class="text-muted text-xs block">滴普科技</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a href="/"><i class="fa fa-th-large"></i> <span class="nav-label">全部视频</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>上传视频</h2>
+            </div>
+            <div class="col-lg-2">
+                    <span th:if="${session.administrator.administratorName}">
+                        欢迎您：&nbsp;&nbsp;&nbsp;[[${session.administrator.administratorName}]]
+                    </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" >
+                <div class="ibox ">
+                <div class="ibox-content">
+                    <form action="/toUpload" enctype="multipart/form-data" method="post">
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group row has-success"><label class="col-sm-2 col-form-label">&nbsp&nbsp&nbsp&nbsp视频标题</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" name="title" class="form-control">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group  row has-error"><label class="col-sm-2 col-form-label">&nbsp&nbsp&nbsp&nbsp视频详情</label>
+
+                            <div class="col-sm-10">
+                                <input type="text"  name="content" class="form-control">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">&nbsp&nbsp&nbsp&nbsp选择文件</label>
+                            <div class="col-sm-10">
+                                <input id="logo" type="file" name="file" class="custom-file-input">
+                                <label for="logo" class="custom-file-label">请选择文件</label>
+                            </div>
+                        </div>                <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">&nbsp&nbsp&nbsp&nbsp选择封面</label>
+                        <div class="col-sm-10">
+                            <input id="logo1" type="file" name="fileCover" class="custom-file-input">
+                            <label for="logo1" class="custom-file-label">请选择封面</label>
+                        </div>
+                    </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <!--<button class="btn btn-white btn-sm" type="submit">cancel</button>-->
+                                <button class="btn btn-primary btn-sm" type="submit">开始上传</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+<!-- iCheck -->
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+<!-- Jasny -->
+<script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+<!-- DROPZONE -->
+<script src="js/plugins/dropzone/dropzone.js"></script>
+
+<!-- CodeMirror -->
+<script src="js/plugins/codemirror/codemirror.js"></script>
+<script src="js/plugins/codemirror/mode/xml/xml.js"></script>
+
+
+<script>
+
+    $(document).ready(function(){
+        $('#logo').on('change', function() {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+        $('#logo1').on('change', function() {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+    });
+</script>
+</body>
+
+</html>
