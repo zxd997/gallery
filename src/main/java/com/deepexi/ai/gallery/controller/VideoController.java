@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @Controller
 public class VideoController {
-    //aaaaa
+
     @Autowired
     IVideoService videoService;
     @Autowired
@@ -92,15 +92,6 @@ public class VideoController {
         videoService.deleteAll();
         return "success";
     }
-    @RequestMapping("/one")
-    public String one(Model model){
-        Optional<Video> videos = videoService.findById("5bee6ee8e6aabd2a2ce0bb27");
-        Video video = videos.get();
-        List<Video> video11 = new ArrayList<>();
-        video11.add(video);
-        model.addAttribute("videos", video11);
-        return "index";
-    }
     @GetMapping("/play")
     public String play(Model model,String aId){
         //访问量加1
@@ -117,12 +108,5 @@ public class VideoController {
     @GetMapping("/789")
     public String login1(){
         return "login";
-    }
-    @ResponseBody
-    @RequestMapping("/777")
-    public String lll(){
-        Amount amount = new Amount(9);
-        amountService.save(amount);
-        return "999999";
     }
 }

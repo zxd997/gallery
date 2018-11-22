@@ -24,7 +24,8 @@ public class MvcConfig extends WebMvcConfigurationSupport {
 //                .excludePathPatterns("/","/login/**","/video_back/play");
         registry.addInterceptor(new Intercecptor()).addPathPatterns("/upload");
     }
-    @Override protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/")
                 .addResourceLocations("classpath:/templates/"); }
