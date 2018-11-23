@@ -22,7 +22,6 @@ public class AdminController {
         if (administrator != null) {
             String admPassword = administrator.getPassword();
             if (admPassword.equals(password)) {
-                //登陆成功
                 response.setCode(200);
                 response.setMsg("登录成功！");
                 httpSession.setAttribute("administrator",administrator);

@@ -10,7 +10,7 @@ $("form button:submit").click(function () {
                 window.location.href="/upload";
             }else {
                 alert(data.msg);
-                window.location.href="/789";
+                window.location.href="/reLogin";
             }
         },
         error:function (data) {

@@ -29,7 +29,7 @@ public class VideoController {
     @Autowired
     IAmountService amountService;
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path ="/", method = RequestMethod.GET)
     public String index(Model model) {
         List<Amount> amount = amountService.findAmount();
         if (amount!=null){
@@ -43,7 +43,6 @@ public class VideoController {
         model.addAttribute("videos", video);
         return "index";
     }
-
     @PostMapping("/toUpload")
     public String uploadByPost(Model model,
                                @RequestParam("file") MultipartFile file,
@@ -105,7 +104,7 @@ public class VideoController {
         model.addAttribute("video",video);
         return "playPage";
     }
-    @GetMapping("/789")
+    @GetMapping("/reLogin")
     public String login1(){
         return "login";
     }

@@ -12,7 +12,7 @@ public class Intercecptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         Object administrator= httpServletRequest.getSession().getAttribute("administrator");
         if (administrator==null){
-            httpServletResponse.sendRedirect("/789");
+            httpServletResponse.sendRedirect("/reLogin");
             return false;
         }
         return true;
