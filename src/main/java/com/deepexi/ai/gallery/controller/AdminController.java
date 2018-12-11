@@ -17,7 +17,7 @@ public class AdminController {
 
     @RequestMapping("/login")
     public Response login(String administratorName, String password){
-        Administrator administrator=adminService.findOneByName(administratorName);
+        Administrator administrator=adminService.findOneByAdministratorName(administratorName);
         Response response = new Response();
         if (administrator != null) {
             String admPassword = administrator.getPassword();

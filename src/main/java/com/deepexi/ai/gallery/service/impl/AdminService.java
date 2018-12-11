@@ -12,7 +12,14 @@ import org.springframework.stereotype.Service;
 public class AdminService implements IAdminService {
     @Autowired
     IAdminDao adminDao;
-//    @Autowired
+
+    @Override
+    public Administrator findOneByAdministratorName(String administratorName) {
+        Administrator administrator=adminDao.findAdministratorByAdministratorName(administratorName);
+        return administrator;
+    }
+
+    //    @Autowired
 //    IAmountDao amountDao;
     @Override
     public Administrator findOneByName(String administratorName) {

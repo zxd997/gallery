@@ -32,7 +32,7 @@ public class VideoController {
     @RequestMapping(path ="/", method = RequestMethod.GET)
     public String index(Model model) {
         List<Amount> amount = amountService.findAmount();
-        if (amount!=null){
+        if (amount.size()!=0){
             int num = amount.get(0).getNum();
             model.addAttribute("count",num);
         }else{
